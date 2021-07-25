@@ -22,5 +22,6 @@
 //    [output] integer
 //
 //            The sum of the two inputs.
+//-------------------------------Code-------------------------------------//
 fun add(param1: Int, param2: Int): Int {
     return  param1 + param2
