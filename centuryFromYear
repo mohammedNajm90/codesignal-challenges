@@ -21,7 +21,7 @@
 //[output] integer
 //
 //The number of the century the year is in.
-
+//-------------------------------Code-------------------------------------//
 fun centuryFromYear(year: Int): Int {    
     if (year.rem(100) == 0) {
         return(year.div(100))       
