@@ -1,0 +1,80 @@
+
+//    An IP address is a numerical label assigned to each device (e.g., computer, printer) participating in a computer network that uses the Internet Protocol for communication. There are two versions of the Internet protocol, and thus two versions of addresses. One of them is the IPv4 address.
+//
+//    Given a string, find out if it satisfies the IPv4 address naming rules.
+//
+//    Example
+//
+//    For inputString = "172.16.254.1", the output should be
+//    isIPv4Address(inputString) = true;
+//
+//    For inputString = "172.316.254.1", the output should be
+//    isIPv4Address(inputString) = false.
+//
+//    316 is not in range [0, 255].
+//
+//    For inputString = ".254.255.0", the output should be
+//    isIPv4Address(inputString) = false.
+//
+//    There is no first number.
+//
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] string inputString
+//
+//    A string consisting of digits, full stops and lowercase English letters.
+//
+//    Guaranteed constraints:
+//    1 ≤ inputString.length ≤ 30.
+//
+//    [output] boolean
+//
+//            true if inputString satisfies the IPv4 address naming rules, false otherwise.
+//-------------------------------Code-------------------------------------//
+fun isIPv4Address(inputString: String): Boolean {
+  var c = 0
+    if(inputString != "") 
+    if(inputString.contains('.') == true)
+    {
+        var subInputString = inputString.split('.')
+        if(subInputString.size==4)
+        {
+        for(i in 0..subInputString.size-1)
+        {
+            if((subInputString[i] == ""))
+                c+=1
+            else if(isNumber(subInputString[i]) == false)
+                c +=1
+            else if((subInputString[i].toLong() !in 0..255) )
+                c +=1
+            else if(beginZero(subInputString[i]) == false)
+                c +=1
+        }
+        if(c>=1)
+            return  false
+        else
+            return true
+            }
+      else
+         return false   
+        
+    }else
+        return false
+    else
+        return false
+}
+fun beginZero(str:String):Boolean{
+        if((str[0] == '0')&&(str.length>1))
+               return false
+    else
+        return true
+}
+fun isNumber(str:String):Boolean{
+    var c = 0
+   for(i in 0..str.length-1)
+       if(str[i].toInt() !in 47..58)
+           c += 1
+    return c==0
+}
