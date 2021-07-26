@@ -1,0 +1,51 @@
+//    Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky if the sum of the first half of the digits is equal to the sum of the second half.
+//
+//    Given a ticket number n, determine if it's lucky or not.
+//
+//    Example
+//
+//    For n = 1230, the output should be
+//    isLucky(n) = true;
+//    For n = 239017, the output should be
+//    isLucky(n) = false.
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] integer n
+//
+//    A ticket number represented as a positive integer with an even number of digits.
+//
+//    Guaranteed constraints:
+//    10 ≤ n < 106.
+//
+//    [output] boolean
+//
+//            true if n is a lucky ticket number, false otherwise.
+//-------------------------------Code-------------------------------------//
+fun isLucky(n: Int): Boolean {
+    var  firstHalf = sumDigit(n, 0, n.toString().length/2 -1)
+    var x = (0 until n.toString().length/2).count()
+    var l="1"
+    for(i in 0..x-1)
+    {
+        l += '0'
+    }
+    var secondHalf = sumDigit(n/l.toInt(),n.toString().length/2 ,n.toString().length -1)     
+    if(firstHalf == secondHalf)
+        return true
+        else
+        return false
+}
+fun sumDigit(n1:Int, start:Int,end:Int):Int
+{  
+    var n = n1   
+    var sum1 = 0
+    for(i in start..end)
+    {
+        sum1 += n % 10;
+        n /= 10;
+    }
+
+    return sum1
+}
