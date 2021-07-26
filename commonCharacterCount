@@ -1,0 +1,69 @@
+//    Given two strings, find the number of common characters between them.
+//
+//    Example
+//
+//    For s1 = "aabcc" and s2 = "adcaa", the output should be
+//    commonCharacterCount(s1, s2) = 3.
+//
+//    Strings have 3 common characters - 2 "a"s and 1 "c".
+//
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] string s1
+//
+//    A string consisting of lowercase English letters.
+//
+//    Guaranteed constraints:
+//    1 ≤ s1.length < 15.
+//
+//    [input] string s2
+//
+//    A string consisting of lowercase English letters.
+//
+//    Guaranteed constraints:
+//    1 ≤ s2.length < 15.
+//
+//    [output] integer
+
+//-------------------------------Code-------------------------------------//
+fun commonCharacterCount(s1: String, s2: String): Int {
+    var numberOfCommonCharacters = 0
+    
+    var str1 = removeDuplicates(s1)
+    var ltStr1 = returnNumberOfDuplicate(str1, s1)
+    var str2 = removeDuplicates(s2)
+    var ltStr2 = returnNumberOfDuplicate(str2, s2)
+    
+    for(i in ltStr1.indices step 2){
+        for(j in ltStr2.indices step 2)
+            if(ltStr1[i]==ltStr2[j])
+                numberOfCommonCharacters += kotlin.math.min(ltStr1[i + 1].toInt(), ltStr2[j + 1].toInt())
+    }
+    return numberOfCommonCharacters
+}
+fun returnNumberOfDuplicate(s1:String, str1:String):MutableList<String>
+{
+    var listt = mutableListOf<String>()
+    s1.forEach {
+        var co = 0
+        listt.add(it.toString())
+        for(i in str1.indices)
+        {
+            if(it == str1[i])
+                co +=1
+        }
+        listt.add(co.toString())
+    }
+    return listt
+}
+fun removeDuplicates(s1:String):String{
+    var s = ""
+    for(i in s1)
+    {
+        if(i !in s)
+            s += i
+    }
+    return s
+}
