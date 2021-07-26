@@ -1,0 +1,40 @@
+//    Given an array of strings, return another array containing all of its longest strings.
+//
+//    Example
+//
+//    For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be
+//    allLongestStrings(inputArray) = ["aba", "vcd", "aba"].
+//
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] array.string inputArray
+//
+//    A non-empty array.
+//
+//    Guaranteed constraints:
+//    1 ≤ inputArray.length ≤ 10,
+//    1 ≤ inputArray[i].length ≤ 10.
+//
+//    [output] array.string
+//
+//            Array of the longest strings, stored in the same order as in the inputArray.
+
+//-------------------------------Code-------------------------------------//
+
+fun allLongestStrings(inputArray: MutableList<String>): MutableList<String> {
+  var outputArray  = mutableListOf<String>()
+  var maxx = 0
+    for(e in inputArray)
+    {
+        if (e.length > maxx)
+            maxx = e.length
+    }
+    for(e in inputArray)
+    {
+        if (e.length == maxx)
+            outputArray.add(e)
+    }  
+   return outputArray 
+}
