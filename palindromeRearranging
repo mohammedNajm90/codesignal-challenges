@@ -1,0 +1,65 @@
+//    Given a string, find out if its characters can be rearranged to form a palindrome.
+//
+//    Example
+//
+//    For inputString = "aabb", the output should be
+//    palindromeRearranging(inputString) = true.
+//
+//    We can rearrange "aabb" to make "abba", which is a palindrome.
+//
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] string inputString
+//
+//    A string consisting of lowercase English letters.
+//
+//    Guaranteed constraints:
+//    1 ≤ inputString.length ≤ 50.
+//
+//    [output] boolean
+//
+//            true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.
+//-------------------------------Code-------------------------------------//
+fun palindromeRearranging(inputString: String): Boolean {
+    var countDuplicateChar = mutableListOf<Int>()
+    var noDouplicateChar = doup(inputString)
+    for(i in noDouplicateChar.indices)
+    {
+        var c = 0
+        for(j in inputString.indices)
+        {
+            if(noDouplicateChar[i] == inputString[j])
+               c +=1
+        }
+        countDuplicateChar.add(c)
+    }
+     return palindrome(countDuplicateChar)
+}
+fun palindrome(strList:List<Int>):Boolean{
+    var c= 0
+    for(i in strList.indices)
+    {
+        if(strList[i].rem(2) != 0)
+            c +=1
+    }
+    return c <= 1
+
+}
+fun doup(str:String):List<Char>{
+    var strList = mutableListOf<Char>()
+    for(i in str.indices)
+    {
+        var c = 0
+        for(j in str.indices)
+        {
+            if(str[i] == str[j])
+               if(str[i] !in strList)
+                   strList.add(str[i].toChar())
+
+        }
+
+    }
+    return strList
+}
