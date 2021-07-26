@@ -1,0 +1,41 @@
+//Define a word as a sequence of consecutive English letters. Find the longest word from the given string.
+//
+//Example
+//
+//For text = "Ready, steady, go!", the output should be
+//longestWord(text) = "steady".
+//
+//Input/Output
+//
+//[execution time limit] 3 seconds (kt)
+//
+//[input] string text
+//
+//Guaranteed constraints:
+//4 ≤ text.length ≤ 50.
+//
+//[output] string
+//
+//The longest word from text. It's guaranteed that there is a unique output.
+//-------------------------------Code-------------------------------------//
+fun longestWord(text: String): String {
+   var word = mutableListOf<String>()
+    if(text.contains(' '))
+        word = text.split(" ".toRegex()).toMutableList()
+    else
+        word = text.split("-".toRegex()).toMutableList()
+    var maxlethWord = ""
+    for (i in word.indices) {
+        var wordWithoutSpChar = ""
+        for(j in word[i].indices)
+        { if((word[i][j].toInt() in 65..90) || (word[i][j].toInt() in 97..122))
+                 wordWithoutSpChar += word[i][j]
+            else
+                break
+        }
+        if (wordWithoutSpChar.length >= maxlethWord.length) {
+            maxlethWord = wordWithoutSpChar
+        }
+    }
+    return maxlethWord
+}
