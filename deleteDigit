@@ -1,0 +1,36 @@
+//Given some integer, find the maximal number you can obtain by deleting exactly one digit of the given number.
+//
+//Example
+//
+//For n = 152, the output should be
+//deleteDigit(n) = 52;
+//For n = 1001, the output should be
+//deleteDigit(n) = 101.
+//Input/Output
+//
+//[execution time limit] 3 seconds (kt)
+//
+//[input] integer n
+//
+//Guaranteed constraints:
+//10 ≤ n ≤ 106.
+//
+//[output] integer
+//-------------------------------Code-------------------------------------//
+fun deleteDigit(n: Int): Int {
+  val nums = n.toString()
+    var max = Integer.valueOf(nums.substring(1, nums.length))
+    for (i in 1 until nums.length) {
+        var newNum: Int
+        newNum = if (i != nums.length) {
+            val numLessI = nums.substring(0, i) + nums.substring(i + 1, nums.length)
+            Integer.valueOf(numLessI)
+        } else {
+            Integer.valueOf(nums.substring(0, nums.length - 1))
+        }
+        if (newNum > max) {
+            max = newNum
+        }
+    }
+    return max
+}
