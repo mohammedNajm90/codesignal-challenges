@@ -1,0 +1,39 @@
+//Given a string, find the shortest possible string which can be achieved by adding characters to the end of initial string to make it a palindrome.
+//
+//Example
+//
+//For st = "abcdc", the output should be
+//buildPalindrome(st) = "abcdcba".
+//
+//Input/Output
+//
+//[execution time limit] 3 seconds (kt)
+//
+//[input] string st
+//
+//A string consisting of lowercase English letters.
+//
+//Guaranteed constraints:
+//3 ≤ st.length ≤ 10.
+//
+//[output] string
+//-------------------------------Code-------------------------------------//
+fun buildPalindrome(st: String): String {
+   var palindrome = ""
+    val leftString = ""
+    var i: Int
+    i = 0
+    while (i < st.length) {
+        val potentialPalindrome = st.substring(i, st.length)
+        if (isPalindrome(potentialPalindrome)) {
+            palindrome = potentialPalindrome
+            if (st.length == palindrome.length) return palindrome
+            break
+        }
+        i++
+    }
+    return st + StringBuilder(st.substring(0, i)).reverse()
+}
+fun isPalindrome(s: String): Boolean {
+    return s == StringBuilder(s).reverse().toString()
+}
