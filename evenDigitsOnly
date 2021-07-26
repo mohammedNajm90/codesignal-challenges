@@ -1,0 +1,30 @@
+//    Check if all digits of the given integer are even.
+//
+//    Example
+//
+//    For n = 248622, the output should be
+//    evenDigitsOnly(n) = true;
+//    For n = 642386, the output should be
+//    evenDigitsOnly(n) = false.
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] integer n
+//
+//    Guaranteed constraints:
+//    1 ≤ n ≤ 109.
+//
+//    [output] boolean
+//
+//            true if all digits of n are even, false otherwise.
+//-------------------------------Code-------------------------------------//
+fun evenDigitsOnly(n: Int): Boolean {
+  var nStr = n.toString()
+    var c = 0
+    for(i in 0..nStr.length-1){
+        if(nStr[i].toInt().rem(2)!=0)
+            c += 1
+    }    
+        return c == 0   
+}
