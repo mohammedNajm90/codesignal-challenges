@@ -1,0 +1,50 @@
+//    Given two cells on the standard chess board, determine whether they have the same color or not.
+//
+//    Example
+//
+//    For cell1 = "A1" and cell2 = "C3", the output should be
+//    chessBoardCellColor(cell1, cell2) = true.
+//
+//
+//
+//    For cell1 = "A1" and cell2 = "H3", the output should be
+//    chessBoardCellColor(cell1, cell2) = false.
+//
+//
+//
+//    Input/Output
+//
+//    [execution time limit] 3 seconds (kt)
+//
+//    [input] string cell1
+//
+//    Guaranteed constraints:
+//    cell1.length = 2,
+//    'A' ≤ cell1[0] ≤ 'H',
+//    1 ≤ cell1[1] ≤ 8.
+//
+//    [input] string cell2
+//
+//    Guaranteed constraints:
+//    cell2.length = 2,
+//    'A' ≤ cell2[0] ≤ 'H',
+//    1 ≤ cell2[1] ≤ 8.
+//
+//    [output] boolean
+//
+//            true if both cells have the same color, false otherwise.
+//-------------------------------Code-------------------------------------//
+fun chessBoardCellColor(cell1: String, cell2: String): Boolean {
+  return isDark(cell1)==isDark(cell2)
+}
+fun isDark(cell:String):Boolean
+{
+    var isDarkChar = listOf("A", "C", "E", "G") 
+    var isDarkNumbeer = listOf("1", "3", "5", "7")
+    if((cell[0].toString() in isDarkChar) &&(cell[1].toString() in isDarkNumbeer)) 
+            return true
+    else if((cell[0].toString() !in isDarkChar) && (cell[1].toString()  !in isDarkNumbeer))
+        return true
+    else
+        return false
+}
